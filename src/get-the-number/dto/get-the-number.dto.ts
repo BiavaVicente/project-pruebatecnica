@@ -1,7 +1,7 @@
 import { IsInt, IsDefined, IsNotEmpty } from 'class-validator';
 import { Type } from 'class-transformer';
 
-export class CreateGetTheNumberDto {
+export class GetTheNumberDto {
     @Type(() => Number)
     @IsInt()
     @IsDefined()

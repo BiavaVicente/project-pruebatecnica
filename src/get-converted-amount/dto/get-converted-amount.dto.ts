@@ -1,7 +1,7 @@
 import { IsNumber, IsDefined, IsNotEmpty, Min, IsEnum } from 'class-validator';
 import { CurrencyCode } from '../enum/currency.enum';
 import { Type } from 'class-transformer';
-export class CreateGetConvertedAmountDto {
+export class GetConvertedAmountDto {
 
       @IsDefined()
       @IsNotEmpty()

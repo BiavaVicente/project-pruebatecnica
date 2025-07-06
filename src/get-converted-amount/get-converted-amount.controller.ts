@@ -1,16 +1,16 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { GetConvertedAmountService } from './get-converted-amount.service';
-import { CreateGetConvertedAmountDto } from './dto/create-get-converted-amount.dto';
+import { GetConvertedAmountDto } from './dto/get-converted-amount.dto';
 
-@Controller('get-converted-amount')
+@Controller('getConvertedAmount')
 export class GetConvertedAmountController {
   constructor(private readonly getConvertedAmountService: GetConvertedAmountService) {}
 
 
 
   @Get()
-  getconverted(@Query() CreateGetConvertedAmountDto: CreateGetConvertedAmountDto)  {
-    return this.getConvertedAmountService.getconverted(CreateGetConvertedAmountDto);
+  getconverted(@Query() GetConvertedAmountDto: GetConvertedAmountDto)  {
+    return this.getConvertedAmountService.getconverted(GetConvertedAmountDto);
   }
 
 

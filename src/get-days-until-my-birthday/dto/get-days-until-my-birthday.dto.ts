@@ -12,3 +12,9 @@ export class CreateGetDaysUntilMyBirthdayDto {
   birthdate: string;
 }
 
+export class GetDaysUntilMyBirthdayDto {
+  @IsDateString()
+  @IsDefined()
+  @IsNotEmpty()
+  birthdate: string;
+}

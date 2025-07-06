@@ -1,13 +1,13 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { GetTheNumberService } from './get-the-number.service';
-import { CreateGetTheNumberDto } from './dto/create-get-the-number.dto';
+import { GetTheNumberDto } from './dto/get-the-number.dto';
 
-@Controller('getthenumber')
+@Controller('getTheNumber')
 export class GetTheNumberController {
   constructor(private readonly getTheNumberService: GetTheNumberService) {}
 
   @Get()
-  getConcatenado(@Query() CreateGetTheNumberDto : CreateGetTheNumberDto) {
-    return this.getTheNumberService.getConcatenado(CreateGetTheNumberDto);
+  getConcatenado(@Query() GetTheNumberDto : GetTheNumberDto) {
+    return this.getTheNumberService.getConcatenado(GetTheNumberDto);
   }
 }

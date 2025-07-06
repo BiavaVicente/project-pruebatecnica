@@ -1,6 +1,6 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Query } from '@nestjs/common';
 import { GetDaysUntilMyBirthdayService } from './get-days-until-my-birthday.service';
-import { CreateGetDaysUntilMyBirthdayDto } from './dto/create-get-days-until-my-birthday.dto';
+import { CreateGetDaysUntilMyBirthdayDto, GetDaysUntilMyBirthdayDto } from './dto/get-days-until-my-birthday.dto';
 
 @Controller('getDaysUntilMyBirthday')
 export class GetDaysUntilMyBirthdayController {
@@ -17,7 +17,7 @@ export class GetDaysUntilMyBirthdayController {
   }
 
   @Get('days')
-  getDays(@Query('birthdate') birthdate: string) {  
-    return this.getDaysUntilMyBirthdayService.getDays(birthdate);
+  getDays(@Query() GetDaysUntilMyBirthdayDto: GetDaysUntilMyBirthdayDto) {  
+    return this.getDaysUntilMyBirthdayService.getDays(GetDaysUntilMyBirthdayDto);
   }
 }
