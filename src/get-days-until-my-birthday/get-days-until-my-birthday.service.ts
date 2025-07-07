@@ -9,21 +9,22 @@ import { rindegastinoInterface } from './interface/rindegastino.interface';
 export class GetDaysUntilMyBirthdayService {
   private rindegastinos: rindegastinoInterface[] = [];
 
-  private getBirthdayFromDate(fechaNacimiento: string): string {
-    const [, mes, dia] = fechaNacimiento.split('-');
+  private getBirthdayFromDate(birthdate: string): string {
+    const [, mes, dia] = birthdate.split('-');
     return `${mes}-${dia}`;
   }
   private getDaysUntilBirthday(birthday: string): number {
     const today = new Date();
+    today.setHours(0, 0, 0, 0);
     const currentYear = today.getFullYear();
-    const birthdayDate = new Date(`${currentYear}-${birthday}`);
-
+    const [mes, dia] = birthday.split('-').map(Number);
+    const birthdayDate = new Date(currentYear, mes - 1, dia);
     if (birthdayDate < today) {
       birthdayDate.setFullYear(currentYear + 1);
     }
 
     const timeDifference = birthdayDate.getTime() - today.getTime();
-    return Math.ceil(timeDifference / (1000 * 3600 * 24));
+    return timeDifference / (1000 * 3600 * 24);
   }
 
   create(createGetDaysUntilMyBirthdayDto: CreateGetDaysUntilMyBirthdayDto) {
@@ -58,6 +59,11 @@ export class GetDaysUntilMyBirthdayService {
     const daysUntilBirthday: number = this.getDaysUntilBirthday(
       this.getBirthdayFromDate(GetDaysUntilMyBirthdayDto.birthdate),
     );
+    if (daysUntilBirthday === 0) {
+      return 'Hoy es su cumpleaños, Felicidades';
+    } else if (daysUntilBirthday === 1) {
+      return `Queda ${daysUntilBirthday} dia para su cumpleaños`;
+    }
     return `Quedan ${daysUntilBirthday} dias para su cumpleaños`;
   }
 }
