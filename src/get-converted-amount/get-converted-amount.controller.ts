@@ -4,14 +4,12 @@ import { GetConvertedAmountDto } from './dto/get-converted-amount.dto';
 
 @Controller('getConvertedAmount')
 export class GetConvertedAmountController {
-  constructor(private readonly getConvertedAmountService: GetConvertedAmountService) {}
-
-
+  constructor(
+    private readonly getConvertedAmountService: GetConvertedAmountService,
+  ) {}
 
   @Get()
-  getconverted(@Query() GetConvertedAmountDto: GetConvertedAmountDto)  {
+  getconverted(@Query() GetConvertedAmountDto: GetConvertedAmountDto) {
     return this.getConvertedAmountService.getconverted(GetConvertedAmountDto);
   }
-
-
 }

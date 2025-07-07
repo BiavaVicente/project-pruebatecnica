@@ -19,9 +19,16 @@ export class GetConvertedAmountService {
       return exchangeRate;
     } catch (error) {
       if (error.response && error.response.data) {
-        const apiMsg = error.response.data.description || error.response.data.message || JSON.stringify(error.response.data);
-        throw new BadRequestException(`[OpenExchangeRates API Error]: ${apiMsg}`);
+        const apiMsg =
+          error.response.data.description ||
+          error.response.data.message ||
+          JSON.stringify(error.response.data);
+        console.error('[OpenExchangeRates API Error]: ' + apiMsg);
+        throw new BadRequestException(
+          `[OpenExchangeRates API Error]: ${apiMsg}`,
+        );
       }
+      console.error('Error interno: ' + (error.message || error));
       throw new BadRequestException(`Error interno: ${error.message || error}`);
     }
   }

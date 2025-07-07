@@ -11,7 +11,9 @@ describe('GetDaysUntilMyBirthdayController', () => {
       providers: [GetDaysUntilMyBirthdayService],
     }).compile();
 
-    controller = module.get<GetDaysUntilMyBirthdayController>(GetDaysUntilMyBirthdayController);
+    controller = module.get<GetDaysUntilMyBirthdayController>(
+      GetDaysUntilMyBirthdayController,
+    );
   });
 
   it('should be defined', () => {

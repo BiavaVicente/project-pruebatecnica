@@ -7,7 +7,7 @@ export class GetTheNumberController {
   constructor(private readonly getTheNumberService: GetTheNumberService) {}
 
   @Get()
-  getConcatenado(@Query() GetTheNumberDto : GetTheNumberDto) {
+  getConcatenado(@Query() GetTheNumberDto: GetTheNumberDto) {
     return this.getTheNumberService.getConcatenado(GetTheNumberDto);
   }
 }

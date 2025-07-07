@@ -9,7 +9,9 @@ describe('GetDaysUntilMyBirthdayService', () => {
       providers: [GetDaysUntilMyBirthdayService],
     }).compile();
 
-    service = module.get<GetDaysUntilMyBirthdayService>(GetDaysUntilMyBirthdayService);
+    service = module.get<GetDaysUntilMyBirthdayService>(
+      GetDaysUntilMyBirthdayService,
+    );
   });
 
   it('should be defined', () => {

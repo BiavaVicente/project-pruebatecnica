@@ -13,7 +13,9 @@ describe('GetConvertedAmountController', () => {
       providers: [GetConvertedAmountService],
     }).compile();
 
-    controller = module.get<GetConvertedAmountController>(GetConvertedAmountController);
+    controller = module.get<GetConvertedAmountController>(
+      GetConvertedAmountController,
+    );
   });
 
   it('should be defined', () => {
